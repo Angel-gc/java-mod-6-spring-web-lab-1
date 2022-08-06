@@ -1,11 +1,11 @@
 package service;
 
 import Model.Camper;
-import dto.CampersDTO;
+import dto.CamperDTO;
+import org.modelmapper.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.expression.ExpressionException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 import repository.CamperRepository;
 import org.modelmapper.ModelMapper;
 
@@ -14,30 +14,26 @@ import java.util.stream.Collectors;
 
 @Service
 public class CamperService {
-
     @Autowired
     private CamperRepository camperRepository;
-
     @Autowired
     private ModelMapper mapper;
 
-    public CampersDTO createCamper(CampersDTO campersDTO){
-        Camper camper = mapper.map(campersDTO, Camper.class);
+    public CamperDTO createCamper(CamperDTO camperDTO) throws ValidationException {
+        Camper camper = mapper.map(camperDTO, Camper.class);
         camper = camperRepository.save(camper);
-        return mapper.map(camper, CampersDTO.class);
+        return mapper.map(camper, CamperDTO.class);
     }
-
-    public CampersDTO getCamper(Long id){
+    public CamperDTO getCamper(Long id){
         Camper camper =
                 camperRepository.findById(id)
-                        .orElseThrow(() -> new ResponseStatusException(HttpStatus.
-                                NOT_FOUND));
-        return mapper.map(camper, CampersDTO.class);
+                        .orElseThrow(() -> new ExpressionException("Camper not found"));
+        return mapper.map(camper, CamperDTO.class);
     }
-    public List<CampersDTO> getAllCampers(){
+    public List<CamperDTO> getAllCampers(){
         return camperRepository.findAll()
                 .stream()
-                .map(camper -> mapper.map(camper, CampersDTO.class))
+                .map(camper -> mapper.map(camper, CamperDTO.class))
                 .collect(Collectors.toList());
     }
 }

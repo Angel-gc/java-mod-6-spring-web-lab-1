@@ -1,8 +1,11 @@
 package Model;
 
 import lombok.Data;
+import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,20 +15,21 @@ import java.util.List;
 @Table(name = "Activities")
 public class Activity {
     @Id
-    @GeneratedValue (strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     private String name;
     private int difficulty;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "created_at")
-    private Date creationDate;
+    private LocalDateTime creationDate;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "updated_at")
-    private Date updateDate;
+    private LocalDateTime updateDate;
 
-    @OneToMany(mappedBy = "activity")
+    @OneToMany(mappedBy = "activity", cascade = CascadeType.REMOVE)
     List<Signup> signUps = new ArrayList<>();
 }

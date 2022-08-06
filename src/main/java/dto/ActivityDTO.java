@@ -4,8 +4,9 @@ import lombok.Data;
 
 import java.util.Set;
 @Data
-public class ActivitiesDTO {
+public class ActivityDTO {
     private Long id;
     private String name;
-    Set<SignupsDTO> signUps;
+    private int difficulty;
+    Set<SignupDTO> signUps;
 }
