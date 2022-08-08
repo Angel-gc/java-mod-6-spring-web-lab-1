@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.dto.CamperDTO;
 import com.example.demo.dto.CreateCamperDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import com.example.demo.service.CamperService;
 
@@ -16,6 +17,7 @@ public class CamperController {
     private CamperService camperService;
 
     @PostMapping
+//    @ResponseStatus(reason = "Some Parameters are invalid")
     public CreateCamperDTO createCamper(@Valid @RequestBody CreateCamperDTO camper){
         return camperService.createCamper(camper);
     }

@@ -17,6 +17,7 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,12 +27,18 @@ public class CamperService {
     @Autowired
     private ApiError apiError;
     @Autowired
+    private CustomRestExceptionHandler customRestExceptionHandler;
+    @Autowired
     private ModelMapper mapper;
 
-    public CreateCamperDTO createCamper(CreateCamperDTO camperDTO) {
+    public CreateCamperDTO createCamper(CreateCamperDTO camperDTO) throws ResponseStatusException{
+        try {
             Camper camper = mapper.map(camperDTO, Camper.class);
             camper = camperRepository.save(camper);
             return mapper.map(camper, CreateCamperDTO.class);
+        } catch (Exception e){
+            throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "validation error");
+        }
     }
     public CamperDTO getCamper(Long id){
         Camper camper =
