@@ -16,7 +16,7 @@ public class CamperController {
     private CamperService camperService;
 
     @PostMapping
-    public CreateCamperDTO createCamper(@RequestBody CreateCamperDTO camper){
+    public CreateCamperDTO createCamper(@Valid @RequestBody CreateCamperDTO camper){
         return camperService.createCamper(camper);
     }
 

@@ -31,6 +31,7 @@ public class ActivityService {
     public ActivityDTO getActivity(long id) {
         Activity activity =
                 activityRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
         return mapper.map(activity, ActivityDTO.class);
     }
 
@@ -43,7 +44,7 @@ public class ActivityService {
 
     public void deleteActivity(Long id) {
         Activity activity =
-                activityRepository.findById(id).orElseThrow(() -> new ExpressionException("Activity not found"));
+                activityRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         activityRepository.deleteById(activity.getId());
     }
 }

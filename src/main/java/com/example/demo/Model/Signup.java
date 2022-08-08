@@ -32,7 +32,6 @@ public class Signup {
 
     @ManyToOne
     private Activity activity;
-
     @ManyToOne
     private Camper camper;
 }
