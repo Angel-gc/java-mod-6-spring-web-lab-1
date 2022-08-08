@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import service.ActivityService;
 import service.SignupService;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/signups")
 public class SignupController {
@@ -20,7 +22,7 @@ public class SignupController {
 
     // If the Signup is created successfully, send back a response with the data related to the Activity:
     @PostMapping
-    public SignupDTO createSignup(@RequestBody SignupDTO signupDTO){
+    public SignupDTO createSignup(@Valid @RequestBody SignupDTO signupDTO){
         return signupService.createSignup(signupDTO);
     }
 }

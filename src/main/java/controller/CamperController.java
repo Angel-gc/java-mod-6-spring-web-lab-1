@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import service.CamperService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -15,7 +16,7 @@ public class CamperController {
     private CamperService camperService;
 
     @PostMapping
-    public CamperDTO createCamper(@RequestBody CamperDTO camper){
+    public CamperDTO createCamper(@Valid @RequestBody CamperDTO camper){
         return camperService.createCamper(camper);
     }
 

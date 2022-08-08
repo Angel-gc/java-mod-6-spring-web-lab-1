@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import service.ActivityService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -15,7 +16,7 @@ public class ActivityController {
     private ActivityService activityService;
 
     @PostMapping
-    public ActivityDTO createActivity(@RequestBody ActivityDTO activityDTO){
+    public ActivityDTO createActivity(@Valid @RequestBody ActivityDTO activityDTO){
         return activityService.createActivity(activityDTO);
     }
 
