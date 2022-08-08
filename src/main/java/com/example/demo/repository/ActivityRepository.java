@@ -1,6 +1,6 @@
-package repository;
+package com.example.demo.repository;
 
-import Model.Activity;
+import com.example.demo.Model.Activity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ActivityRepository extends JpaRepository<Activity, Long> {

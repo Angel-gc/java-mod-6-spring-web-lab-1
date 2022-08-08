@@ -1,9 +1,9 @@
-package controller;
+package com.example.demo.controller;
 
-import dto.ActivityDTO;
+import com.example.demo.dto.ActivityDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import service.ActivityService;
+import com.example.demo.service.ActivityService;
 
 import javax.validation.Valid;
 import java.util.List;

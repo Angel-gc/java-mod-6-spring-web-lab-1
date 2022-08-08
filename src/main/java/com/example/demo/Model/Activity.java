@@ -1,13 +1,11 @@
-package Model;
+package com.example.demo.Model;
 
 import lombok.Data;
-import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -22,11 +20,11 @@ public class Activity {
     private String name;
     private int difficulty;
 
-    @Temporal(TemporalType.DATE)
+//    @Temporal(TemporalType.DATE)
     @Column(name = "created_at")
     private LocalDateTime creationDate;
 
-    @Temporal(TemporalType.DATE)
+//    @Temporal(TemporalType.DATE)
     @Column(name = "updated_at")
     private LocalDateTime updateDate;
 

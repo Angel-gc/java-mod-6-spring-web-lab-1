@@ -1,15 +1,14 @@
-package service;
+package com.example.demo.service;
 
-import Model.Activity;
-import dto.ActivityDTO;
-import dto.CamperDTO;
+import com.example.demo.Model.Activity;
+import com.example.demo.dto.ActivityDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.expression.ExpressionException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import repository.ActivityRepository;
+import com.example.demo.repository.ActivityRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;

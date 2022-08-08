@@ -1,6 +1,6 @@
-package repository;
+package com.example.demo.repository;
 
-import Model.Camper;
+import com.example.demo.Model.Camper;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CamperRepository extends JpaRepository<Camper, Long> {

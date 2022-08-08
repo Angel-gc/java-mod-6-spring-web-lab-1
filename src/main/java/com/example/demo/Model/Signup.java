@@ -1,4 +1,4 @@
-package Model;
+package com.example.demo.Model;
 
 import lombok.Data;
 import javax.persistence.*;
@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 
 
 @Data
+@Entity
 @Table(name = "Signups")
 public class Signup {
     @Id
@@ -21,19 +22,17 @@ public class Signup {
     @Column(name = "hour_of_the_day")
     private int time;
 
-    @Temporal(TemporalType.DATE)
+//    @Temporal(TemporalType.DATE)
     @Column(name = "created_at")
     private LocalDateTime creationDate;
 
-    @Temporal(TemporalType.DATE)
+//    @Temporal(TemporalType.DATE)
     @Column(name = "updated_at")
     private LocalDateTime updateDate;
 
     @ManyToOne
-    @JoinColumn(name = "activity_id")
     private Activity activity;
 
     @ManyToOne
-    @JoinColumn(name = "camper_id")
     private Camper camper;
 }

@@ -1,10 +1,10 @@
-package controller;
+package com.example.demo.controller;
 
-import Model.Camper;
-import dto.CamperDTO;
+import com.example.demo.dto.CamperDTO;
+import com.example.demo.dto.CreateCamperDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import service.CamperService;
+import com.example.demo.service.CamperService;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -16,7 +16,7 @@ public class CamperController {
     private CamperService camperService;
 
     @PostMapping
-    public CamperDTO createCamper(@Valid @RequestBody CamperDTO camper){
+    public CreateCamperDTO createCamper(@RequestBody CreateCamperDTO camper){
         return camperService.createCamper(camper);
     }
 

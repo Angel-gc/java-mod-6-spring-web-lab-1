@@ -1,6 +1,6 @@
-package repository;
+package com.example.demo.repository;
 
-import Model.Signup;
+import com.example.demo.Model.Signup;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SignupRepository extends JpaRepository<Signup, Long> {
